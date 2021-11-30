@@ -1,11 +1,12 @@
-let num = 266219;
+const argument = prompt('Введите строчное значение')
 
-let multi = num.toString().split(''); // переводим переменную типа number в массив
-
-console.log(multi);
-
-let result = multi.reduce((acc, rec) => acc * rec); // Получаем произведение всех индексов массива
-
-console.log(result);
-
-console.log(String(result ** 3).slice(0, 2)); //полученное значение возводим в третью степень и выводим только первые две цифры
+const value = function (argument) {
+   if (argument !== 'string') {
+      alert('Необходимо ввести строчное значение')
+   } else if (argument == "string") {
+      argument.trim()
+   } else if (argument.length > 30) {
+      argument.substring(0, 29) + '...';
+   }
+};
+value();
