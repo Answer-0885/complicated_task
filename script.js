@@ -37,6 +37,7 @@ const getDayName = (number, lang) => ({
 
 console.log(getDayName(4, 'en')) // Thursday
 console.log(getDayName(2, 'ru')) // Вторник;
+
 // Или другой способ
 const lang_array = [];
 lang_array['ru'] = arrRu;
