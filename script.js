@@ -1,12 +1,17 @@
-const argument = prompt('Введите строчное значение')
+// Создайте функцию, которая принимает 1 аргумент (название произвольное)
+// Если в качестве аргумента передана не строка - функция оповещает об этом пользователя
+// — В полученной(как аргумент) строке функция должна убрать все пробелы в начале и в конце
+// — Если строка более 30 знаков - то после 30 го символа часть текста скрывается и вместо них появляются три точки(...)
 
-const value = function (argument) {
-   if (argument !== 'string') {
-      alert('Необходимо ввести строчное значение')
-   } else if (argument == "string") {
-      argument.trim()
-   } else if (argument.length > 30) {
-      argument.substring(0, 29) + '...';
+
+const argument = prompt('Введите строчное значение');
+
+function value(argument) {
+   if (typeof argument !== "string") {
+      return 'Необходимо ввести строчное значение';
+   } else {
+      argument = argument.trim();
+      return argument.length > 30 ? argument.slice(0, 29) + '...' : argument;
    }
-};
-value();
+}
+alert(value(argument));
