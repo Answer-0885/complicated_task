@@ -1,11 +1,33 @@
-let num = 266219;
+'use strict'
+// Написать игровой бот.
+//"Загадывание случайного числа от 1 до 100"
 
-let multi = num.toString().split(''); // переводим переменную типа number в массив
+let randomNum = parseInt(Math.random() * 100);
 
-console.log(multi);
+function isNum(num) {
+   return !isNaN(parseFloat(num)) && isFinite(num);
+}
 
-let result = multi.reduce((acc, rec) => acc * rec); // Получаем произведение всех индексов массива
+function guessNumber() {
+   let userNum = prompt('Угадай число от 1 до 100');
+   if (isNum(userNum)) {
+      userNum = +userNum;
 
-console.log(result);
+      if (userNum > randomNum) {
+         alert('Загаданное число меньше');
+      } else if (userNum < randomNum) {
+         alert('Загаданное число больше');
+      } else if (userNum === randomNum) {
+         alert('Поздравляю, Вы угадали!!!');
+         return userNum;
+      }
+   } else if (userNum === null) {
+      alert('Игра окончена');
+      return;
+   } else {
+      alert('Введите число!');
+   }
+   return guessNumber();
+}
 
-console.log(String(result ** 3).slice(0, 2)); //полученное значение возводим в третью степень и выводим только первые две цифры
+console.log(guessNumber());
