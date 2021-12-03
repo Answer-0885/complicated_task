@@ -2,11 +2,10 @@
 // Написать игровой бот.
 //"Загадывание случайного числа от 1 до 100"
 
-let lives;
 
 function rdm() {
    let randomNum = parseInt(Math.random() * 100); // Загадываем число от одного до ста
-   lives = 9;
+   let lives = 9;
 
 
    function isNum(num) {
