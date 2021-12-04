@@ -1,0 +1,19 @@
+body{
+   display: flex;
+   justify-content: center;
+}
+.fordays{
+   font-size: 48px;
+   line-height: 90px;
+   letter-spacing: 5px; 
+   color:orange;
+   text-align: center;
+   border: 5px double blueviolet;
+}
+.today{
+   font-weight: bold;
+   color:orangered;
+}
+.italic{
+   font-style: italic;
+}
