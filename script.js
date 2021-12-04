@@ -1,11 +1,30 @@
-let num = 266219;
+'use strict';
+// Необходимо выполнить в отдельном js файле, подключенному к отдельной HTML странице
+// 1) Создать массив week и записать в него дни недели в виде строк
+// Вывести на экран все дни недели
+// Каждый из них с новой строчки
+// Выходные дни - курсивом
+// Текущий день - жирным шрифтом(использовать объект даты)
+const week = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
+const day = document.querySelector('.fordays'); // Получаем div куда всё будем вставлять
+const todayDay = new Date();
 
-let multi = num.toString().split(''); // переводим переменную типа number в массив
+const days = () => {
+   week.forEach((item, i) => {
+      let newdiv = document.createElement('div'); // Для каждого элемента week создаём div
+      if (i === +todayDay.getDay() - 1) { // Если текущий день недели то от номера текущей даты отнимаем единицу, так как массив у нас начинается с нуля
+         console.log(todayDay.getDay());
+         newdiv.classList.add('today'); // Добавляем класс (делаем жирным)
+         newdiv.textContent = week[i]; // Вставляем текст
+      }
+      if (item == 'Суббота' || item == 'Воскресенье') { // Если выходные то
+         newdiv.classList.add('italic'); // Делаем дополнительно курсивом (Даже если уже жирным выделено)
+         newdiv.textContent = week[i]; // Вставляем текст
+      } else {
+         newdiv.textContent = week[i]; // Если не текущий день и не выходные, то просто вставляем текст без стилей
+      }
+      day.appendChild(newdiv); // Добавляем новый див в div day
 
-console.log(multi);
-
-let result = multi.reduce((acc, rec) => acc * rec); // Получаем произведение всех индексов массива
-
-console.log(result);
-
-console.log(String(result ** 3).slice(0, 2)); //полученное значение возводим в третью степень и выводим только первые две цифры
+   });
+};
+days(); // Вызываем функцию;
