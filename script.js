@@ -3,44 +3,50 @@
 
 //  a)'Сегодня Вторник, 4 февраля 2020 года, 21 час 5 минут 33 секунды'
 // Для вывода в формате(а) напишите функцию, которая будет менять склонение слов в зависимости от числа, "час, часов, часа"
-
+let forDays = document.querySelector('.fordays');
+let oClock = document.querySelector('.oclock');
 let d = new Date();
-let hours = d.getHours();
-let mins = d.getMinutes();
-let sec = d.getSeconds();
 
-let wordForm = function (num, word) {
-   cases = [2, 0, 1, 1, 1, 2];
-   return word[(num % 100 > 4 && num % 100 < 20) ? 2 : cases[(num % 10 < 5) ? num % 10 : 5]]; // проверка, чтобы подобрать правильное окончание.
+function clock1() {
+   let hours = d.getHours();
+   let mins = d.getMinutes();
+   let sec = d.getSeconds();
+
+   let wordForm = function (num, word) {
+      cases = [2, 0, 1, 1, 1, 2];
+      return word[(num % 100 > 4 && num % 100 < 20) ? 2 : cases[(num % 10 < 5) ? num % 10 : 5]]; // проверка, чтобы подобрать правильное окончание.
+   }
+   resultHours = hours + wordForm(hours, [' час ', ' часа ', ' часов ']);
+   resultMins = mins + wordForm(mins, [' минута ', ' минуты ', ' минут ']);
+   resultSec = sec + wordForm(sec, [' секунда ', ' секунды ', ' секунд ']);
+
+   let day = new Array("Воскресенье", "Понедельник", "Вторник",
+      "Среда", "Четверг", "Пятница", "Суббота");
+
+   let month = new Array("января", "февраля", "марта", "апреля", "мая", "июня",
+      "июля", "августа", "сентября", "октября", "ноября", "декабря");
+
+   let time = "Сегодня " + (day[d.getDay()] + " " + d.getDate() + " " + month[d.getMonth()] +
+      " " + d.getFullYear() + " г. " + resultHours + resultMins + resultSec)
+
+   oClock.textContent = time;
 }
-resultHours = hours + wordForm(hours, [' час ', ' часа ', ' часов ']);
-resultMins = mins + wordForm(mins, [' минута ', ' минуты ', ' минут ']);
-resultSec = sec + wordForm(sec, [' секунда ', ' секунды ', ' секунд ']);
-
-let day = new Array("Воскресенье", "Понедельник", "Вторник",
-   "Среда", "Четверг", "Пятница", "Суббота");
-
-let month = new Array("января", "февраля", "марта", "апреля", "мая", "июня",
-   "июля", "августа", "сентября", "октября", "ноября", "декабря");
-
-alert("Сегодня " + (day[d.getDay()] + " " + d.getDate() + " " + month[d.getMonth()] +
-   " " + d.getFullYear() + " г. " + resultHours + resultMins + resultSec));
+setInterval(clock1, 1000);
 
 
 
 //  б)'04.02.2020 - 21:05:33'
 // Для вывода в формате(б) напишите функцию, которая будет добавлять 0 перед значениями которые состоят из одной цифры(из 9: 5: 3 1.6 .2019 сделает 09: 05: 03 01.06 .2019)
-let forDays = document.querySelector('.fordays');
 
 
-function clock() {
-   Data = new Date();
-   year = Data.getFullYear();
-   month = Data.getMonth();
-   day = Data.getDate();
-   hour = Data.getHours();
-   minutes = Data.getMinutes();
-   seconds = Data.getSeconds();
+
+function clock2() {
+   year = d.getFullYear();
+   month = d.getMonth();
+   day = d.getDate();
+   hour = d.getHours();
+   minutes = d.getMinutes();
+   seconds = d.getSeconds();
 
    // проверка если цифра до 9 включительно, то прибавляем 0 спереди
    function addZero(num) {
@@ -93,10 +99,9 @@ function clock() {
 
    currentTime = "Текущее время: " + addZero(day) + "." + addZero(fMonth) + "." + addZero(year) + " - " + addZero(hour) + ":" + addZero(minutes) + ":" + addZero(seconds)
 
+   forDays.textContent = currentTime;
+
    // Вывод
    console.log(currentTime);
 }
-setInterval(clock, 1000);
-
-clock();
-forDays.textContent = currentTime;
+setInterval(clock2, 1000);
