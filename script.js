@@ -5,12 +5,13 @@
 // Для вывода в формате(а) напишите функцию, которая будет менять склонение слов в зависимости от числа, "час, часов, часа"
 let forDays = document.querySelector('.fordays');
 let oClock = document.querySelector('.oclock');
-let d = new Date();
+
 
 function clock1() {
-   let hours = d.getHours();
-   let mins = d.getMinutes();
-   let sec = d.getSeconds();
+   d = new Date();
+   hours = d.getHours();
+   mins = d.getMinutes();
+   sec = d.getSeconds();
 
    let wordForm = function (num, word) {
       cases = [2, 0, 1, 1, 1, 2];
@@ -41,6 +42,7 @@ setInterval(clock1, 1000);
 
 
 function clock2() {
+   d = new Date();
    year = d.getFullYear();
    month = d.getMonth();
    day = d.getDate();
