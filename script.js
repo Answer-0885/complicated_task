@@ -103,7 +103,5 @@ function clock2() {
 
    forDays.textContent = currentTime;
 
-   // Вывод
-   console.log(currentTime);
 }
 setInterval(clock2, 1000);
