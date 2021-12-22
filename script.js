@@ -1,18 +1,41 @@
 'use strict'
 
-let paragraph = document.querySelector('.paragraph');
-let debouncedOnInput = debounce(onInput);
+const anime = document.querySelector('.animation');
+const startPause = document.querySelector('.start-pause');
+const reset = document.querySelector('.reset');
 
-function debounce(callback) {
-   let timeout;
-   return function (argument) {
-      clearTimeout(timeout);
-      timeout = setTimeout(callback, 300, argument);
-   };
+
+let count = 0;
+let active = false;
+let idInterval;
+
+const flyAnimate = () => {
+   count++;
+   idInterval = requestAnimationFrame(flyAnimate);
+
+   if (count < 800) {
+      anime.style.left = count + 'px';
+      anime.style.top = count + 'px';
+
+      console.log(anime.style.left);
+
+   } else {
+      cancelAnimationFrame(idInterval);
+   }
 }
 
-function onInput(event) {
-   paragraph.textContent = event.target.value;
-}
-
-document.querySelector('.input').addEventListener('keyup', debouncedOnInput);
+startPause.addEventListener('click', () => {
+   if (active) {
+      cancelAnimationFrame(idInterval);
+      active = false;
+   } else {
+      idInterval = requestAnimationFrame(flyAnimate);
+      active = true;
+   }
+});
+reset.addEventListener('click', () => {
+   anime.style.left = 0;
+   anime.style.top = 0;
+   active = true;
+   count = 0;
+});

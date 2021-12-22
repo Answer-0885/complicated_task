@@ -1,9 +1,32 @@
-.input{
-   font-size: 45px;
-   border-radius: 15px;
-   color:darkorange;
+.animation{
+   position: absolute;
+   width: 100px;
+   height: 100px;
+   border-radius: 50px;
+   background-color: darkorchid;
 }
-.paragraph{
-   font-size: 45px;
-   color:darkorange;
+.start-pause{
+   position: relative;
+   left: 250px;
+   width: 200px;
+   height: 100px;
+   font-size: 36px;
+   border: 2px double red;
+   background-color: deepskyblue;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.reset{
+   position: relative;
+   margin-top: 20px;
+   left: 330px;
+   width: 200px;
+   height: 100px;
+   font-size: 36px;
+   border: 2px double red;
+   background-color: deepskyblue;
+   display: flex;
+   align-items: center;
+   justify-content: center;  
 }
