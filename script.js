@@ -34,8 +34,13 @@ startPause.addEventListener('click', () => {
    }
 });
 reset.addEventListener('click', () => {
-   anime.style.left = 0;
-   anime.style.top = 0;
-   active = true;
-   count = 0;
-});
+   if (active) {
+      startPause.click();
+      count = 0;
+      anime.style.left = 0 + 'px';
+      anime.style.top = 0 + 'px';
+      active = false;
+   } else {
+      active = true;
+   }
+})
