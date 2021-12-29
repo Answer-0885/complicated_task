@@ -44,3 +44,6 @@ reset.addEventListener('click', () => {
       active = true;
    }
 })
+
+
+console.dir(document)
